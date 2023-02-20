@@ -1,0 +1,27 @@
+<div class="panel">
+    <select *ngIf="!!imageNames" [(ngModel)]="imageName" (ngModelChange)="imageNameSelected()">
+        <option [value]="null" disabled>Select file</option>
+        <option *ngFor="let imageName of imageNames" [value]="imageName">{{imageName}}</option>
+    </select>
+
+    <input (change)="this.onFilechange($event)" accept="image/*" class="" type="file" id="formFile" />
+
+    <button [disabled]="!image" (click)="this.upload()" type="button">Upload</button>
+
+    <button [disabled]="!(cropFrom.x - cropTo.x !== 0 && cropFrom.y - cropTo.y !== 0)" (click)="this.crop()"
+        type="button">Crop
+    </button>
+
+    <button [disabled]="!isClippedImageLoaded" (click)="this.download()" type="button">Download cropped image</button>
+</div>
+
+<div *ngIf="!!src" class="image-container">
+    <div class="image-item" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)">
+        <img id="image" src="{{src}}" />
+        <div class="box"></div>
+    </div>
+    <div class="image-item">
+        <img [hidden]="!isClippedImageLoaded" src="{{croppedSrc}}"
+            (error)="isClippedImageLoaded = false" (load)="isClippedImageLoaded = true" />
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.panel {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border: 1px black solid;
+    border-radius: 1rem;
+    place-content: space-around;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 1rem;
+
+    .image-item {
+        width: 100%;
+        flex-grow: 1;
+    }
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 650px;
+    object-fit: contain;
+    pointer-events: none;
+
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-drag: none;
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+}
+
+.box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0px;
+    height: 0px;
+    background-color: yellow;
+    opacity: 0.3;
+}
